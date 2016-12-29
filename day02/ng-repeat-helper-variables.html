@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes App</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<div ng-repeat="note in ctrl.notes">
+    <span class="label">{{note.label}}</span>
+
+    <div>First Element: {{$first}}</div>
+    <div>Middle Element: {{$middle}}</div>
+    <div>Last Element: {{$last}}</div>
+    <div>Index of Element: {{$index}}</div>
+    <div>At Even Position:　{{$even}}</div>
+    <div>At Odd Position: {{$odd}}</div>
+
+
+    <span class="status" ng-bind="note.done"></span>
+    <br><br>
+</div>
+
+<script src="../build/angular.js"></script>
+<script>
+    //ng-repeat中的辅助变量
+    //$first $middle $last值为布尔型的变量
+    //$index 当前元素索引
+    //$odd $even 奇偶值为布尔型
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self=this;
+        self.notes=[
+            {id: 1, label: 'First Note', done: false},
+            {id: 2, label: 'Second Note', done: false},
+            {id: 3, label: 'Done Note', done: true},
+            {id: 4, label: 'Last Note', done: false}
+        ]
+    }])
+
+
+</script>
+
+</body>
+</html>
