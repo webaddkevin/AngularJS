@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>notesApp</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<table>
+    <tr ng-repeat-start="note in ctrl.notes">
+        <td>{{note.label}}</td>
+    </tr>
+    <tr ng-repeat-end>
+        <td>done:{{note.done}}</td>
+    </tr>
+</table>
+
+
+<script src="../build/angular.js"></script>
+<script>
+    //ng-repeat 标记操作范围通过ng-repeat-start 和ng-repeat-end指令
+    //完成效果  一行显示label ,一行显示 状态
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self=this;
+        self.notes = [
+            {id: 1,label: 'First Note',done: false},
+            {id: 2,label: 'Second Note',done: false},
+            {id: 3,label: 'Finished Third Note',done:true}
+        ]
+    }])
+
+</script>
+</body>
+</html>
