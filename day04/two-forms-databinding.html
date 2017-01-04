@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定和模型</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<form ng-submit="ctrl.submit1()">
+    <input type="text" ng-model="ctrl.username">
+    <input type="password" ng-model="ctrl.password">
+    <input type="submit" value="subimt">
+</form>
+
+<form ng-submit="ctrl.submit2()">
+    <input type="text" ng-model="ctrl.user.username">
+    <input type="password" ng-model="ctrl.user.password">
+    <input type="submit" value="subimt">
+</form>
+<script src="../build/angular.js"></script>
+<script>
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self = this;
+        self.submit1 = function(){
+            //创建了一个代表用户的对象并发给服务器
+            var user = {username: self.username,password: self.password};
+            console.log('First form submit with' ,user)
+        }
+        self.submit2 = function(){
+            console.log('Second form submit with ',self.user)
+        }
+    }])
+</script>
+</body>
+</html>

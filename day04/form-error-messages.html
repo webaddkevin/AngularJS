@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>form-error</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<form ng-submit="ctrl.submit()" name="myform">
+    <input type="text" name="uname" ng-model="ctrl.user.username" required minlength="4">
+    <span ng-show="myform.uname.$error.required">
+        this is a required field
+    </span>
+    <span ng-show="myform.uname.$error.minlength">
+        Minimum length required is 4
+    </span>
+    <span ng-show="myform.uname.$invalid">
+        This field is invlid
+    </span>
+    <input type="password" name="pwd" ng-model="ctrl.user.password" required>
+    <span ng-show="myform.pwd.$error.required">
+        This is a required field
+    </span>
+    <input type="submit" vaule="submit" ng-disabled="myform.$invalid">
+</form>
+
+
+
+<script src="../build/angular.js"></script>
+<script>
+    //显示错误信息
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self = this;
+        self.submit = function(){
+            console.log('User clicked submit width ',self.user)
+        }
+    }])
+</script>
+
+</body>
+</html>

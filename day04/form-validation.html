@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<form ng-submit="ctrl.submit()" name="myform">
+    <input type="text" ng-model="ctrl.user.username" required ng-minlength="4">
+    <input type="password" ng-model="ctrl.user.password" required>
+    <input type="submit" value="submit" ng-disabled="myform.$invalid">
+</form>
+
+
+<script src="../build/angular.js"></script>
+<script>
+    //$invalid一旦有任何验证没有通过ng就会为表单设置invalid
+    //$valid与$invalid相反
+    //$pristine 表单初始状态
+    //$dirty 与$pristine相反
+    //$error 控件错误信息
+
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self = this;
+        self.submit = function(){
+            console.log('User clicked submit width ',self.user)
+        }
+    }])
+</script>
+</body>
+</html>
