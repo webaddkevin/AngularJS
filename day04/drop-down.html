@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉框</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+<div>
+    <select ng-model="ctrl.selectedCountryId" ng-options="c.id as c.label for c in ctrl.countries">
+    </select>
+    Selected Country ID:{{ctrl.selectedCountryId}}
+</div>
+
+<div>
+    <select ng-model="ctrl.selectedCountry" ng-options="c.label for c in ctrl.countries"></select>
+    Selected Country : {{ctrl.selectedCountry}}
+</div>
+<script src="../build/angular.js"></script>
+<script>
+    angular.module('notesApp',[]).controller('MainCtrl',[function(){
+        var self=this;
+        self.countries = [
+            {label: 'USA',id: 1},
+            {label: 'India',id: 2},
+            {label: 'Other',id: 3}
+        ];
+        self.selectedCountryId = 2;
+        self.selectedCountry = self.countries[1];
+    }])
+
+</script>
+</body>
+</html>

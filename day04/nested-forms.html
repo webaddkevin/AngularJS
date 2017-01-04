@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>ng-form与内嵌表单</title>
+</head>
+<body>
+<form novalidate name="myform">
+    <input type="text" class="username" name="uname" ng-model="ctrl.user.username" required placeholder="Username" ng-minlength="4">
+    <input type="password" class="password" name="pwd" mg-model="ctrl.user.password" placeholder="Password" required>
+    <!--创建子表单ng-form-->
+    <ng-form name="profile">
+        <input type="text" name="firstName" ng-model="ctrl.user.profile.firstName" placeholder="First Name" required>
+        <input type="text" name="MiddleName" placeholder="Middle Name" ng-model="ctrl.user.profile.middleName">
+        <input type="text" name="LastName" placeholder="Last Name" ng-model="ctrl.user.profile.lastName" required>
+        <input type="date" name="dob" placeholder="Date of Birth" ng-model="ctrl.user.profile.dob">
+    </ng-form>
+
+    <span ng-show="myform.profile.$invalid">
+        Please fill out the profile information
+    </span>
+    <input type="submit" value="submit" ng-disabled="myform.$invalid">
+</form>
+
+
+<script src="../build/angular.js"></script>
+</body>
+</html>
