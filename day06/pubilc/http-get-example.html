@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>$http get</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    <h1>Hello Servers!</h1>
+    <div ng-repeat="item in ctrl.items">
+        <div><span ng-bind="item.label"></span></div>
+        <div>- by<span ng-bind="item.author"></span></div>
+    </div>
+<script src="../../build/angular.min.js"></script>
+<script>
+    angular.module('notesApp',[]).controller('MainCtrl',['$http',function($http){
+        var self = this;
+        self.items = [];
+        $http.get('/api/note').then(function(response){
+            self.items = response.data;
+        },function(errResponse){
+            console.error('Error while fetching notes');
+        })
+    }])
+</script>
+
+
+</body>
+</html>
