@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+
+<script src="../build/angular.min.js"></script>
+<script>
+    angular.module('filtersApp',[]).controller('filterMain',[function(){
+        var self = this;
+        self.notes = [
+            {label: 'FC Todo', type: 'chore', done: false},
+            {label: 'FC Todo', type: 'task', done: false},
+            {label: 'FC Todo', type: 'fun', done: true},
+            {label: 'SC Todo', type: 'chore', done: false},
+            {label: 'ST Todo', type: 'task', done: true},
+            {label: 'SF Todo', type: 'fun', done: true},
+            {label: 'TC Todo', type: 'chore', done: false},
+            {label: 'TT Todo', type: 'task', done: false},
+            {label: 'TF Todo', type: 'fun', done: false}
+        ]
+        self.sortOrder = ['+type','-label'];
+        self.filterOptions = {
+            "string": '',
+            "object": {done: }
+        }
+    }])
+
+</script>
+</body>
+</html>

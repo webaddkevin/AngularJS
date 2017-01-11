@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filtersApp">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body ng-controller="filterMain as filter">
+<ul>
+    <li>
+        Amount - {{filter.amount}}
+    </li>
+    <li>
+        Amount - default currency {{filter.amount | currency}}
+    </li>
+    <li>
+        <!--使用英镑符号-->
+        Amount - INR currency: {{ filter.amount | currency: '&#163'}}
+    </li>
+    <li>
+        Amount - No.with 4 decimals: {{filter.amount | number: 4}}
+    </li>
+    <li>
+        Name - lowercase filter: {{filter.name}}
+    </li>
+    <li>
+        Name - uppercase filter: {{filter.name | uppercase}}
+    </li>
+    <li>
+        Name - lowercase filter: {{filter.name | lowercase}}
+    </li>
+    <li>
+        The JSON Filter: {{filter.obj | json}}
+    </li>
+    <li>
+        default date filter: {{filter.startTime | date}}
+    </li>
+    <li>
+        default date filter: {{filter.startTime | date: 'medium'}}
+    </li>
+    <li>
+        default date filter: {{filter.startTime | date: 'M/dd ,yyyy'}}
+    </li>
+</ul>
+<script src="../build/angular.min.js"></script>
+<script>
+    angular.module('filtersApp',[]).controller('filterMain',[function(){
+        var self = this;
+        self.amount = 1024;
+        self.name = 'Shyam Seshadri';
+        self.obj = {test: 'value', num: 123}
+        self.startTime = new Date().getTime();
+    }])
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filtersApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Filters</title>
+</head>
+<body ng-controller="filterMain as filter">
+<div>
+    <!--转为数字-->
+    Amount as a number :{{filter.amount | number}}
+</div>
+<div>
+    <!--转为货币-->
+    total cost as a currency:{{filter.totalCost | currency}}
+</div>
+<div>
+    <!--增加INR货币符号-->
+    total cost as a currency:{{filter.totalCost | currency:'INR '}}
+</div>
+<div>
+    <!--转为大写-->
+    shouting the name:{{filter.name | uppercase}}
+</div>
+<div>
+    <!--转为小写-->
+    whispering the name:{{filter.name | lowercase}}
+</div>
+<div>
+    <!--媒体对象-->
+    start time:{{filter.startTime | date:'medium'}}
+</div>
+<script src="../build/angular.min.js"></script>
+<script>
+//    过滤器 filter
+//  {{ data | filter }}
+    angular.module('filtersApp',[]).controller('filterMain',[function(){
+        var self = this;
+        self.amount = 1024;
+        self.totalCost = 4906;
+        self.name = 'Shyam Seshadri';
+        self.startTime = new Date().getTime();
+    }])
+
+</script>
+</body>
+</html>

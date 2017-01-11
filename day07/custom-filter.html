@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filtersApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义过滤器</title>
+</head>
+<body ng-controller="filterMain as filter">
+<div>
+    someTimeAgo: {{ filter.someTimeAgo | timeAgo}}
+</div>
+
+
+
+<script src="../build/angular.min.js"></script>
+<script>
+    angular.module('filtersApp',[]).controller('filterMain',[function(){
+        this.startTime = new Date().getTime();
+        this.someTimeAgo = new Date().getTime() - (1000 * 60 * 60 * 4);
+    }]).filter('timeAgo',[function(){
+        var ONE_MINUTE = 1000 * 60;
+        var ONE_HOUR = ONE_MINUTE * 60;
+        var ONE_DAY = ONE_HOUR * 24;
+        var ONE_MONTH = ONE_DAY * 30;
+        return function(ts){
+            var currentTime = new Date().getTime()
+            var diff = currentTime - ts;
+            if(diff < ONE_MINUTE){
+                return 'seconds ago';
+            }else if(diff < ONE_HOUR){
+                return 'minutes ago'
+            }else if(diff < ONE_DAY){
+                return 'hours ago'
+            }else if(diff < ONE_MONTH){
+                return 'days ago'
+            }else{
+                return 'months ago'
+            }
+        }
+    }])
+
+</script>
+</body>
+</html>
