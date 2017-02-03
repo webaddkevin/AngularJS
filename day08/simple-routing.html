@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="routingApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng路由</title>
+    <script src="../build/angular.min.js"></script>
+    <script src="../build/angular-route.js"></script>
+</head>
+<body>
+<h2>ng Routing</h2>
+<ul>
+    <li><a href="#/">default route</a></li>
+    <li><a href="#/second">second route</a></li>
+    <li><a href="#/dasdad">nonexistent route</a></li>
+</ul>
+<div ng-view></div>
+
+<script>
+    angular.module('routingApp',['ngRoute']).config(['$routeProvider',function($routeProvider){
+        $routeProvider.when('/',{
+            template: '<h5>This is the default route</h5>'
+        }).when('/second',{
+            template: '<h5>This is the second route</h5>'
+        }).otherwise({//url从定向
+            redirectTo: '/'
+        })
+    }])
+
+</script>
+</body>
+</html>

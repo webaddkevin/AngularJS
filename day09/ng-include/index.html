@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body ng-app="stock">
+<div ng-controller="MainCtrl as mainCtrl">
+    <h3>List of Stocks</h3>
+    <div ng-repeat="stock in mainCtrl.stocks">
+        <div ng-include="mainCtrl.stockTemplate"></div>
+    </div>
+</div>
+
+<script src="../../build/angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
